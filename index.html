@@ -14,13 +14,34 @@
   </head>
   <body>
 
-    <!-- Search Bar -->
-    <div class="search-bar">
-      <div class="search-or-start">
-        <span><i id="search" class="fas fa-search"></i></span>
-        <input id="input-search" type="text" placeholder="Search">
+    <div class="wrapper">
+
+      <div class="container">
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+          <div class="search-or-start">
+            <span><i id="search" class="fas fa-search"></i></span>
+            <input id="input-search" type="text" placeholder="Search">
+          </div>
+        </div>
+
+        <ul class="film-list">
+
+        </ul>
+
       </div>
+
     </div>
+
+    <script id="film-template" type="text/x-handlebars-template">
+      <li class="this-film">
+        <span class="title">{{ title }}</span>
+        <span class="original-title">{{ originalTitle }}</span>
+        <span class="language">{{ language }}</span>
+        <span class="vote">{{ vote }}</span>
+      </li>
+    </script>
 
     <script src="js/script.js">
 

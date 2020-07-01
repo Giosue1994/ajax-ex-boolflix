@@ -30,6 +30,8 @@ function filmSearch(filmName) {
       success: function(data) {
         var film = data.results;
         console.log(film);
+
+        printFilm(film);
       },
 
       error: function() {
@@ -38,4 +40,29 @@ function filmSearch(filmName) {
 
     }
   );
+}
+
+
+// funzione stampa film
+function printFilm(results) {
+  $('.film-list').html('');
+
+  var source = $("#film-template").html();
+  var template = Handlebars.compile(source);
+
+  for (var i = 0; i < results.length; i++) {
+
+    var context = {
+      title: results.title,
+      originalTitle: results.original_title,
+      language: results.original_language,
+      vote: results.vote_average
+    };
+
+    console.log(context);
+
+    var html = template(context);
+
+    $('.film-list').append(html);
+  }
 }
