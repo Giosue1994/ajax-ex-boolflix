@@ -1,0 +1,40 @@
+/* ________ RESET ________ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ________ REGOLE GENERALI ________ */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Search Bar */
+.search-bar {
+  background-color: #16252c;
+  padding: 10px;
+}
+.search-bar .search-or-start {
+  background-color: #0b1d24;
+  display: flex;
+}
+.search-bar .search-or-start span {
+  font-size: 25px;
+  vertical-align: middle;
+  margin: 0 15px;
+  color: #b0b0b0;
+  align-self: center;
+  cursor: pointer;
+}
+.search-bar .search-or-start input {
+  font-size: 16px;
+  padding: 10px 15px;
+  border:none;
+  box-shadow: none;
+  outline-color: #6edafd;;
+  background-color:transparent;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  color: #7d7d7d;
+}
