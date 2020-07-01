@@ -44,19 +44,19 @@ function filmSearch(filmName) {
 
 
 // funzione stampa film
-function printFilm(results) {
+function printFilm(film) {
   $('.film-list').html('');
 
   var source = $("#film-template").html();
   var template = Handlebars.compile(source);
 
-  for (var i = 0; i < results.length; i++) {
+  for (var i = 0; i < film.length; i++) {
 
     var context = {
-      title: results.title,
-      originalTitle: results.original_title,
-      language: results.original_language,
-      vote: results.vote_average
+      title: film.title,
+      originalTitle: film.original_title,
+      language: film.original_language,
+      vote: film.vote_average
     };
 
     console.log(context);
