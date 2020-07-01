@@ -1,20 +1,25 @@
 $(document).ready(function() {
-
-  // 13feba4bc2e448e7522d3eaca8987928
-  // https://api.themoviedb.org/3/search/movie?api_key=13feba4bc2e448e7522d3eaca8987928&query=ritorno al futuro&language=it-IT
+// 13feba4bc2e448e7522d3eaca8987928
+// https://api.themoviedb.org/3/search/movie?api_key=13feba4bc2e448e7522d3eaca8987928&query=ritorno al futuro&language=it-IT
 
   // al click del bottone cerco i film che vengono scritti sull'input
   $('#search').click(function() {
-
     var inputSearch = $('#input-search').val();
-    console.log(inputSearch);
-
     filmSearch(inputSearch);
   });
 
+  // al click del tasto invia sull'input cerco i film
+  $('#input-search').keydown(function(event) {
+      if (event.which === 13 || event.keyCode === 13) {
+        var inputSearch = $('#input-search').val();
+        filmSearch(inputSearch);
+      }
+    });
+
 });
 
-// funzione ricerca film
+//////////////////////////////////////////////////////
+// FUNZIONE RICERCA FILM
 function filmSearch(filmName) {
 
   $.ajax(
@@ -29,8 +34,7 @@ function filmSearch(filmName) {
 
       success: function(data) {
         var film = data.results;
-        console.log(film);
-
+        // stampo i film su schermo
         printFilm(film);
       },
 
@@ -43,7 +47,8 @@ function filmSearch(filmName) {
 }
 
 
-// funzione stampa film
+//////////////////////////////////////////////////////
+// FUNZIONE STAMPA FILM
 function printFilm(film) {
   $('.film-list').html('');
 
@@ -52,14 +57,14 @@ function printFilm(film) {
 
   for (var i = 0; i < film.length; i++) {
 
-    var context = {
-      title: film.title,
-      originalTitle: film.original_title,
-      language: film.original_language,
-      vote: film.vote_average
-    };
+    var thisFilm = film[i];
 
-    console.log(context);
+    var context = {
+      title: 'Titolo: ' + thisFilm.title,
+      originalTitle: 'Titolo originale: ' + thisFilm.original_title,
+      language: 'Lingua originale: ' + thisFilm.original_language,
+      vote: 'Voto: ' + thisFilm.vote_average
+    };
 
     var html = template(context);
 
