@@ -20,7 +20,7 @@ $(document).ready(function() {
 
 //////////////////////////////////////////////////////
 // FUNZIONE RICERCA FILM
-function filmSearch(filmName) {
+function filmSearch(filmQuery) {
 
   $.ajax(
     {
@@ -29,7 +29,7 @@ function filmSearch(filmName) {
       data : {
         api_key: '13feba4bc2e448e7522d3eaca8987928',
         language: 'it-IT',
-        query: filmName
+        query: filmQuery
       },
 
       success: function(data) {
@@ -60,10 +60,10 @@ function printFilm(film) {
     var thisFilm = film[i];
 
     var context = {
-      title: 'Titolo: ' + thisFilm.title,
-      originalTitle: 'Titolo originale: ' + thisFilm.original_title,
-      language: 'Lingua originale: ' + thisFilm.original_language,
-      vote: 'Voto: ' + thisFilm.vote_average
+      title: thisFilm.title,
+      originalTitle: thisFilm.original_title,
+      language: thisFilm.original_language,
+      vote: thisFilm.vote_average
     };
 
     var html = template(context);
