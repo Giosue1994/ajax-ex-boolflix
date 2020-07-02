@@ -10,6 +10,10 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+ul {
+  list-style-type: none;
+}
+
 /* Search Bar */
 .search-bar {
   background-color: #16252c;
@@ -40,8 +44,6 @@ body {
 }
 
 .this-film {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
+  border-bottom: 1px solid black;
   padding: 20px;
 }
