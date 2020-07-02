@@ -38,8 +38,9 @@
       <li class="this-film">
         <h2 class="description title">Titolo: {{ title }}</h2>
         <ul>
+          <li class="description poster-path"><img src="{{ posterPath }}" alt="Immagine non disponibile"></li>
           <li class="description original-title">Titolo originale: {{ originalTitle }}</li>
-          <li class="description language">Lingua originale: <img src="{{ flag }}" alt="{{ language }}"></li>
+          <li class="description language">Lingua originale: <img src="img/{{ language }}.png" alt="{{ language }}"></li>
           <li class="description vote">Voto: {{ vote }}</li>
         </ul>
         <h4 class="description tipology">{{ tipology }}</h4>

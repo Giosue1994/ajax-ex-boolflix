@@ -23,13 +23,18 @@ $(document).ready(function() {
 // FUNZIONE RICERCA FILM
 function filmSearch(filmQuery) {
 
+  // variabili ajax
+  var url = 'https://api.themoviedb.org/3/search/multi';
+  var apiKey = '13feba4bc2e448e7522d3eaca8987928';
+  var language = 'it-IT';
+
   $.ajax(
     {
-      url: 'https://api.themoviedb.org/3/search/multi',
+      url: url,
       method: "GET",
       data : {
-        api_key: '13feba4bc2e448e7522d3eaca8987928',
-        language: 'it-IT',
+        api_key: apiKey,
+        language: language,
         query: filmQuery
       },
 
@@ -75,13 +80,18 @@ function printFilm(film) {
   for (var i = 0; i < film.length; i++) {
     var thisFilm = film[i];
 
+    var poster = 'https://image.tmdb.org/t/p/w185' + thisFilm.poster_path;
+
+    var vote = parseInt(thisFilm.vote_average);
+    console.log(vote);
+
     if(thisFilm['media_type'] != 'person') {
 
       var context = {
+        posterPath: poster,
         title: thisFilm.title,
         originalTitle: thisFilm.original_title,
         language: thisFilm.original_language,
-        flag: 'img/' + thisFilm.original_language + '.png',
         vote: thisFilm.vote_average,
         tipology: thisFilm.media_type
       };
@@ -90,8 +100,7 @@ function printFilm(film) {
 
       $('.film-list').append(html);
     }
-    };
-
+  };
 
 }
 

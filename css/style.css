@@ -46,4 +46,11 @@ ul {
 .this-film {
   border-bottom: 1px solid black;
   padding: 20px;
+  flex-basis: calc(100% / 6);
+}
+
+.film-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
