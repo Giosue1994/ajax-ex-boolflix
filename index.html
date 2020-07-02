@@ -40,8 +40,8 @@
         <ul>
           <li class="description poster-path"><img src="{{ posterPath }}" alt="Immagine non disponibile"></li>
           <li class="description original-title">Titolo originale: {{ originalTitle }}</li>
-          <li class="description language">Lingua originale: <img src="img/{{ language }}.png" alt="{{ language }}"></li>
-          <li class="description vote">Voto: {{ vote }}</li>
+          <li class="description language">Lingua originale: <img src="img/{{ language }}.png" alt="{{ language }}">{{ language }}</li>
+          <li class="description vote">{{{ vote }}}</li>
         </ul>
         <h4 class="description tipology">{{ tipology }}</h4>
       </li>

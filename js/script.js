@@ -79,12 +79,9 @@ function printFilm(film) {
 
   for (var i = 0; i < film.length; i++) {
     var thisFilm = film[i];
-
     var poster = 'https://image.tmdb.org/t/p/w185' + thisFilm.poster_path;
 
-    var vote = parseInt(thisFilm.vote_average);
-    console.log(vote);
-
+    // se il media_type è diverso da person stampa su schermo
     if(thisFilm['media_type'] != 'person') {
 
       var context = {
@@ -92,7 +89,7 @@ function printFilm(film) {
         title: thisFilm.title,
         originalTitle: thisFilm.original_title,
         language: thisFilm.original_language,
-        vote: thisFilm.vote_average,
+        vote: voteInStar(thisFilm.vote_average),
         tipology: thisFilm.media_type
       };
 
@@ -102,6 +99,24 @@ function printFilm(film) {
     }
   };
 
+}
+
+//////////////////////////////////////////////////////
+// FUNZIONE VOTO IN STELLE
+function voteInStar(vote) {
+  var voteFive = Math.round(vote / 2);
+
+  var stars = '';
+
+  for (var i = 1; i <= 5; i++) {
+    if (i <= voteFive) {
+      stars += '<i class="fas fa-star"></i>';
+    } else {
+      stars += '<i class="far fa-star"></i>';
+    }
+  }
+
+  return stars;
 }
 
 //////////////////////////////////////////////////////
