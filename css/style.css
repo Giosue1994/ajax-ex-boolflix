@@ -16,6 +16,14 @@ body {
   padding: 10px 20px;
 }
 
+.container.error {
+  background-image: url('../img/error.png');
+  background-repeat: no-repeat;
+  background-size: 1000px;
+  background-position: center;
+  height: 100vh;
+}
+
 ul {
   list-style-type: none;
 }
@@ -70,6 +78,7 @@ nav {
   padding: 20px 0;
 }
 
+/* TEMPLATE MEDIA */
 .this-media {
   padding: 20px;
   flex-basis: calc(100% / 5);
@@ -105,11 +114,21 @@ nav {
   animation-iteration-count: 1;
 }
 @keyframes wiggle {
-  0%  { transform: translateY(100%);  }
-  40%  { transform: translateY(-4px); }
-  60%  { transform: translateY(2px);  }
-  80%  { transform: translateY(-1px); }
-  100% { transform: translateY(0);    }
+  0%  {
+    transform: translateY(60%);
+  }
+  40%  {
+    transform: translateY(-4px);
+  }
+  60%  {
+    transform: translateY(2px);
+  }
+  80%  {
+    transform: translateY(-1px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .this-media .media-description .title {
@@ -123,4 +142,15 @@ nav {
 
 .this-media .media-description .tipology {
   color: red;
+}
+
+/* TEMPLATE MESSAGE ERROR */
+.message-error {
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

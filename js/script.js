@@ -3,6 +3,7 @@ $(document).ready(function() {
   // al click del bottone cerco i media che vengono scritti nell'input
   $('#search').click(function() {
     var inputSearch = $('#input-search').val();
+    $('.container').removeClass('error');
     reset();
     mediaSearch(inputSearch);
   });
@@ -11,6 +12,7 @@ $(document).ready(function() {
   $('#input-search').keydown(function(event) {
     if (event.which === 13 || event.keyCode === 13) {
       var inputSearch = $('#input-search').val();
+      $('.container').removeClass('error');
       reset();
       mediaSearch(inputSearch);
     }
@@ -57,14 +59,17 @@ function mediaSearch(mediaQuery) {
         if (media.length > 0) {
           printMedia(media);
         } else {
+          $('.container').addClass('error');
           var errorMessagge = 'Scrivi qualcosa di sensato cretino...';
           messageError(errorMessagge);
         };
       },
 
       error: function() {
+        $('.container').addClass('error');
         var errorMessagge = 'Ricerca non avvenuta, forse dovresti scrivere qulacosa, non ti pare?';
         messageError(errorMessagge);
+
       }
 
     }
