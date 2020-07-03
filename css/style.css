@@ -8,19 +8,37 @@
 /* ________ REGOLE GENERALI ________ */
 body {
   font-family: 'Roboto', sans-serif;
+  background-color: black;
+  color: white;
+}
+
+.container {
+  padding: 10px 20px;
 }
 
 ul {
   list-style-type: none;
 }
 
+/* ________ HEADER ________ */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+}
+
+/* Logo */
+.logo img {
+  width: 200px;
+}
+
 /* Search Bar */
 .search-bar {
-  background-color: #16252c;
+  background-color: black;
   padding: 10px;
 }
 .search-bar .search-or-start {
-  background-color: #0b1d24;
   display: flex;
 }
 .search-bar .search-or-start span {
@@ -36,21 +54,62 @@ ul {
   padding: 10px 15px;
   border:none;
   box-shadow: none;
-  outline-color: #6edafd;;
+  outline-color: #e60109;
   background-color:transparent;
   width: 100%;
   font-family: 'Roboto', sans-serif;
-  color: #7d7d7d;
+  color: white;
 }
 
-.this-media {
-  border-bottom: 1px solid black;
-  padding: 20px;
-  flex-basis: calc(100% / 6);
-}
-
+/* ________ MAIN ________ */
+/* Media List */
 .media-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding: 20px 0;
+}
+
+.this-media {
+  padding: 20px;
+  flex-basis: calc(100% / 5);
+  height: 700px;
+}
+.this-media .description {
+  padding-bottom: 20px;
+}
+
+.this-media .poster-path {
+  position: relative;
+}
+.this-media .poster-path img {
+  border: 1px solid white;
+}
+
+.this-media .media-description {
+  background-color: black;
+  border: 1px solid white;
+  position: absolute;
+  padding: 40px 20px;
+  width: 100%;
+  height: 95.7%;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  display: none;
+}
+.this-media .poster-path:hover .media-description {
+  display: block;
+}
+@keyframes slide {
+    100% { left: 0; }
+}
+
+.this-media .media-description .title {
+  padding-bottom: 30px;
+  font-size: 35px;
+}
+
+.this-media .media-description .vote {
+  color: yellow;
 }

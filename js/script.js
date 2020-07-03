@@ -3,6 +3,7 @@ $(document).ready(function() {
   // al click del bottone cerco i media che vengono scritti nell'input
   $('#search').click(function() {
     var inputSearch = $('#input-search').val();
+    reset();
     mediaSearch(inputSearch);
   });
 
@@ -10,6 +11,7 @@ $(document).ready(function() {
   $('#input-search').keydown(function(event) {
       if (event.which === 13 || event.keyCode === 13) {
         var inputSearch = $('#input-search').val();
+        reset();
         mediaSearch(inputSearch);
       }
     });
@@ -55,12 +57,14 @@ function mediaSearch(mediaQuery) {
         if (media.length > 0) {
           printMedia(media);
         } else {
-          messageError('Scrivi qualcosa di sensato cretino...');
+          var errorMessagge = 'Scrivi qualcosa di sensato cretino...';
+          messageError(errorMessagge);
         };
       },
 
       error: function() {
-        messageError('Ricerca non avvenuta, forse dovresti scrivere qulacosa, non ti pare?');
+        var errorMessagge = 'Ricerca non avvenuta, forse dovresti scrivere qulacosa, non ti pare?';
+        messageError(errorMessagge);
       }
 
     }
@@ -71,7 +75,6 @@ function mediaSearch(mediaQuery) {
 //////////////////////////////////////////////////////
 // FUNZIONE STAMPA MEDIA
 function printMedia(media) {
-  reset();
 
   var source = $("#media-template").html();
   var template = Handlebars.compile(source);
@@ -79,7 +82,6 @@ function printMedia(media) {
   for (var i = 0; i < media.length; i++) {
     var thisMedia = media[i];
     var poster = posterPath(thisMedia.poster_path);
-    console.log(poster);
 
     // se il 'media_type' è diverso da 'person' stampa su schermo
     if(thisMedia['media_type'] != 'person') {
@@ -90,6 +92,7 @@ function printMedia(media) {
         originalTitle: thisMedia.original_title,
         language: thisMedia.original_language,
         vote: voteInStar(thisMedia.vote_average),
+        overview: printOverview(thisMedia.overview),
         tipology: thisMedia.media_type
       };
 
@@ -125,11 +128,26 @@ function posterPath(poster) {
   var posterPath = 'img/img_not_found.png';
 
   if (poster != undefined) {
-    var posterPath = 'https://image.tmdb.org/t/p/w185' + poster;
+    posterPath = 'https://image.tmdb.org/t/p/w342' + poster;
   }
 
   return posterPath;
 }
+
+//////////////////////////////////////////////////////
+// FUNZIONE OVERVIEW
+function printOverview(overview) {
+
+  var thisOverview = overview;
+
+  if (thisOverview == '') {
+    thisOverview = 'Descrizione non disponbile';
+  }
+
+  return thisOverview;
+}
+
+
 
 //////////////////////////////////////////////////////
 // FUNZIONE RESET
@@ -140,7 +158,6 @@ function reset() {
 //////////////////////////////////////////////////////
 // FUNZIONE MESSAGGIO DI ERRORE
 function messageError(message) {
-  reset();
   var source = $("#error-template").html();
   var template = Handlebars.compile(source);
 

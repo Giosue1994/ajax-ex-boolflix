@@ -14,45 +14,72 @@
   </head>
   <body>
 
-    <div class="wrapper">
+    <div class="container">
 
-      <div class="container">
+      <!-- HEADER -->
+      <header>
 
-        <!-- Search Bar -->
-        <div class="search-bar">
-          <div class="search-or-start">
-            <span><i id="search" class="fas fa-search"></i></span>
-            <input id="input-search" type="text" placeholder="Search">
+        <nav>
+          <!-- Logo -->
+          <div class="logo">
+            <img src="img/logo.png" alt="BOOLFLIX LOGO">
           </div>
-        </div>
 
+          <!-- Search Bar -->
+          <div class="search-bar">
+            <div class="search-or-start">
+              <span><i id="search" class="fas fa-search"></i></span>
+              <input id="input-search" type="text" placeholder="Search">
+            </div>
+          </div>
+        </nav>
+
+      </header>
+
+      <!-- MAIN -->
+      <main>
+
+        <!-- Media List -->
         <ul class="media-list">
 
         </ul>
 
-      </div>
+      </main>
 
     </div>
 
+    <!-- TEMPLATE MEDIA -->
     <script id="media-template" type="text/x-handlebars-template">
       <li class="this-media">
-        <h2 class="description title">Titolo: {{ title }}</h2>
-        <ul>
-          <li class="description poster-path"><img src="{{ posterPath }}" alt="Immagine non disponibile"></li>
-          <li class="description original-title">Titolo originale: {{ originalTitle }}</li>
-          <li class="description language">Lingua originale: <img src="img/{{ language }}.png" alt="{{ language }}">{{ language }}</li>
-          <li class="description vote">{{{ vote }}}</li>
-        </ul>
-        <h4 class="description tipology">{{ tipology }}</h4>
+
+        <div class="description poster-path">
+          <img src="{{ posterPath }}" alt="Immagine non disponibile">
+          <div class="media-description">
+            <h2 class="description title">{{ title }} </h2>
+
+            <ul>
+              <li class="description original-title"><b>Titolo originale</b>: {{ originalTitle }}.</li>
+              <li class="description language"><b>Lingua originale</b>: {{ language }}.<br><br><img src="img/flag/{{ language }}.png" alt="{{ language }}"></li>
+              <li class="description vote">{{{ vote }}}</li>
+              <li class="description overview"><b>Overview</b>: {{ overview }}</li>
+            </ul>
+
+            <h3 class="description tipology">{{ tipology }}</h3>
+          </div>
+        </div>
+
+
       </li>
     </script>
 
+    <!-- TEMPLATE MESSAGE ERROR -->
     <script id="error-template" type="text/x-handlebars-template">
       <div class="error">
         <p class="message-error">{{ message }}</p>
       </div>
     </script>
 
+    <!-- JAVASCRIPT -->
     <script src="js/script.js">
 
     </script>
