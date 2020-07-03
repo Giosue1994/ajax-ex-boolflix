@@ -9,12 +9,12 @@ $(document).ready(function() {
 
   // al click del tasto invia nell'input cerco i media
   $('#input-search').keydown(function(event) {
-      if (event.which === 13 || event.keyCode === 13) {
-        var inputSearch = $('#input-search').val();
-        reset();
-        mediaSearch(inputSearch);
-      }
-    });
+    if (event.which === 13 || event.keyCode === 13) {
+      var inputSearch = $('#input-search').val();
+      reset();
+      mediaSearch(inputSearch);
+    }
+  });
 
 });
 
@@ -93,7 +93,7 @@ function printMedia(media) {
         language: thisMedia.original_language,
         vote: voteInStar(thisMedia.vote_average),
         overview: printOverview(thisMedia.overview),
-        tipology: thisMedia.media_type
+        tipology: thisMedia.media_type.toUpperCase()
       };
 
       var html = template(context);

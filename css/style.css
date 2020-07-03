@@ -94,15 +94,22 @@ nav {
   width: 100%;
   height: 95.7%;
   top: 0;
-  left: 0;
+  left: 0%;
   overflow-y: auto;
   display: none;
+  transition:all 0.25s ease-in;
 }
 .this-media .poster-path:hover .media-description {
   display: block;
+  animation: wiggle 1s ease;
+  animation-iteration-count: 1;
 }
-@keyframes slide {
-    100% { left: 0; }
+@keyframes wiggle {
+  0%  { transform: translateY(100%);  }
+  40%  { transform: translateY(-4px); }
+  60%  { transform: translateY(2px);  }
+  80%  { transform: translateY(-1px); }
+  100% { transform: translateY(0);    }
 }
 
 .this-media .media-description .title {
@@ -112,4 +119,8 @@ nav {
 
 .this-media .media-description .vote {
   color: yellow;
+}
+
+.this-media .media-description .tipology {
+  color: red;
 }
